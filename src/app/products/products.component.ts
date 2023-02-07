@@ -2,22 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductAddEditComponent } from './product-add-edit/product-add-edit.component';
-import { ProductService } from './services/product.service';
+import { ProductAddEditComponent } from '../product-add-edit/product-add-edit.component';
+import { ProductService } from '../services/product.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import { CoreservicesService } from './core/coreservices.service';
-
+import { CoreservicesService } from '../core/coreservices.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss']
 })
-export class AppComponent implements OnInit{
-
+export class ProductsComponent {
   title = 'product';
-  token = localStorage.getItem('token');
 
   displayedColumns: string[] = ['id', 'productName','productCategory','price','productDate','action'];
   dataSource!: MatTableDataSource<any>;
@@ -29,8 +26,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.getProductList();
-    // console.log(this.token);
-    
   }
 
   
@@ -86,5 +81,4 @@ export class AppComponent implements OnInit{
     });
   
   }
-
 }

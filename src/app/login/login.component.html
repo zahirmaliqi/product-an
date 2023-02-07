@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row mainrow">
+    
+    <div class="col-6 img-sec">
+      <img alt="My image name" src="./assets/img/logo.png" class="img1">
+     </div>
+
+     <div class="col-6 h-100 d-flex align-items-center justify-content-center bg-info">
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <h1 class="text-primary pb-4"><b>User Login</b></h1>
+
+          <mat-form-field appearance="fill" class="emailinput ">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+
+
+            <div class="example-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+          
+            <button type="submit" class="w-100 btn btn-primary">Login</button>
+          
+      </form>
+      </div>
+  </div>
+</div>
+        
+    
